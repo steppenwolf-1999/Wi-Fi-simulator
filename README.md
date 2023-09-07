@@ -10,28 +10,34 @@ tips:The formula may not be in the right Latex form, so anyone want to read this
 
 # Wi-Fi Signal Strength Mapping Application Using Java and C++ with Java Native Interface
 
+### Description
+Wi-Fi signal strength mapping application is a project that aims to provide the most ideal spot to place the Wi-Fi router, ensuring the entirety of the house receives an adequate reception. The system enables users to enter their floor plan as a PNG image, modify certain parameters like frequency and material of the walls and then pick a spot to place the router, the system then takes those inputs and generates a heatmap image which displays the flow and reach of the signals. 
 
-### UML
+### Application UML
 ![UML](https://github.com/steppenwolf-1999/Wi-Fi-simulator/blob/main/picture/system_design.png)
 
 ### The working sample of the GUI and input/ output
-Home Page
-!(https://github.com/steppenwolf-1999/Wi-Fi-simulator/blob/main/picture/Screenshot_20221210_223235.png)
+## Home Page
 
-Input Page
-!(https://github.com/steppenwolf-1999/Wi-Fi-simulator/blob/main/picture/Screenshot_20221210_223322.png)
+![Home Page](https://github.com/steppenwolf-1999/Wi-Fi-simulator/blob/main/picture/Screenshot_20221210_223235.png)
 
-Output Page
-!(https://github.com/steppenwolf-1999/Wi-Fi-simulator/blob/main/picture/resultPage.png)
+## Input Page
 
-Onother Output Page
-!(https://github.com/steppenwolf-1999/Wi-Fi-simulator/blob/main/picture/anotherResult.jpg)
+![Input Page](https://github.com/steppenwolf-1999/Wi-Fi-simulator/blob/main/picture/Screenshot_20221210_223322.png)
 
-Final Page
-!(https://github.com/steppenwolf-1999/Wi-Fi-simulator/blob/main/picture/againPage.png)
+## Output Page
 
-### Description
-Wi-Fi signal strength mapping application is a project that aims to provide the most ideal spot to place the Wi-Fi router, ensuring the entirety of the house receives an adequate reception. The system enables users to enter their floor plan as a PNG image, modify certain parameters like frequency and material of the walls and then pick a spot to place the router, the system then takes those inputs and generates a heatmap image which displays the flow and reach of the signals. 
+![Output Page](https://github.com/steppenwolf-1999/Wi-Fi-simulator/blob/main/picture/resultPage.png)
+
+## Another Output Page
+
+![Onother Output Page](https://github.com/steppenwolf-1999/Wi-Fi-simulator/blob/main/picture/anotherResult.jpg)
+
+## Final Page
+
+![Final Page](https://github.com/steppenwolf-1999/Wi-Fi-simulator/blob/main/picture/againPage.png)
+
+
 
 
 
