@@ -154,6 +154,7 @@ JSci: up to now the best
 ​	What we need: a solver to linear system such as:
 
  $A \cdot X = b$
+ 
 $$
 X=A^{-1}*b
 $$
