@@ -20,13 +20,17 @@ Wi-Fi signal strength mapping application is a project that aims to provide the 
 ### 1. Helmholtz equation
 
 ​	First let's explain the Helmholtz equation:
+
 $$
 \Delta E +\frac{k^2}{n^2}E=f
 $$
+
 ​	which can be also written in two dimension expanded form:
+
 $$
 (\frac{\partial^2}{\partial^2 x}+\frac{\partial^2}{\partial^2 y})E(x,y)+\frac{k^2}{n(x,y)^2}E(x,y)=f(x,y)
 $$
+
 ​	Here $E$ means the amplitude of the electric field (which can be considered as Wi-Fi strength), $n$ means the refraction index and $f$ means the wave source distribution.
 
 ​	To understand why our algorithms need to solve sparse matrix calculation, we first need to understand why there is $E(x,y)$, $n(x,y)$ and $f(x,y)$. In physics, if a quantity $X$ is followed by a bracket $(x,y)$, it means the quantity takes different value in different place in the $x-y$ plane. For example, $E(x,y)$ means the amplitude of the electric field is different in different place. $n(x,y)$ means the refraction index is different in different place. So as $f(x,y)$.
@@ -65,31 +69,42 @@ k = 2π / λ                # k is the wavenumber
 ### 3. How to change the Helmholtz equation into finite form
 
 ​	This part I will derive the finite form of Helmholtz equation. As shown before, the two dimension Helmholtz equation is:
+
 $$
 (\frac{\partial^2}{\partial^2 x}+\frac{\partial^2}{\partial^2 y})E(x,y)+\frac{k^2}{n(x,y)^2}E(x,y)=f(x,y)
 $$
+
 ​	which can also be written as:
+
 $$
 \frac{\partial}{\partial x}(\frac{\partial E(x,y)}{\partial x})+\frac{\partial}{\partial y}(\frac{\partial E(x,y)}{\partial y})+\frac{k^2}{n(x,y)^2}E(x,y)=f(x,y)
 $$
+
 ​	You may remember the partial derivative means how fast a function changes, so:
+
 $$
 \frac{\partial E(x,y)}{\partial x}=\lim\limits_{\Delta x\rightarrow\infty} \frac{E(x+\Delta x,y)-E(x,y)}{\Delta x}
 $$
+
 ​	and
+
 $$
 \lim\limits_{\Delta x\rightarrow\infty} \frac{\partial E(x-\Delta x,y)}{\partial x}=\lim\limits_{\Delta x\rightarrow\infty} \frac{E(x,y)-E(x-\Delta x,y)}{\Delta x}
 $$
+
 ​	So we have:
 
 
 $$
 \frac{\partial}{\partial x}(\frac{\partial E(x,y)}{\partial x})=\lim\limits_{\Delta x\rightarrow\infty} \frac{\frac{\partial E(x,y)}{\partial x}-\frac{\partial E(x-\Delta x,y)}{\partial x}}{\Delta x}\\ =\lim\limits_{\Delta x\rightarrow\infty}\frac{\frac{E(x+\Delta x,y)-E(x,y)}{\Delta x}-\frac{E(x,y)-E(x-\Delta x,y)}{\Delta x}}{\Delta x} \\=\lim\limits_{\Delta x\rightarrow\infty} \frac{E(x+\Delta x,y)+E(x-\Delta x,y)-2E(x,y)}{(\Delta x)^2}
 $$
+
 ​	Then Helmholtz equation can be written as:
+
 $$
 \lim\limits_{\Delta x\rightarrow\infty} \frac{E(x+\Delta x,y)+E(x-\Delta x,y)-2E(x,y)}{(\Delta x)^2}+ \frac{E(x,y+\Delta y)+E(x,y-\Delta y)-2E(x,y)}{(\Delta y)^2}+\frac{k^2}{n(x,y)^2}E(x,y)=f(x,y)
 $$
+
 ​	But differentiating a function to an infinite small is a conceptual idea, which can only be achieved in brain. Luckily physicians already proved that computer do the differentiation a bit at one time, the final result converge to the infinite form! Which means if we write the above equation in a finite form and set $\Delta x$ and $\Delta y$ to a very small value, the result given by computer will be very similar to the reality.
 
  	Then we get the final form of Helmholtz equation that computer can really solve, which is just to remove the $lim$ sign:
@@ -99,16 +114,18 @@ $$
 $$
 
 ​	And assume each step alone the $x$ or $y$ direction is just the length of one pixel, we can turn the scale of our finite differentiation exactly same as the scale of our input picture(360*224). That's why in the original blog the writer use $i$ and $j$ as index to $x$ and $y$ and get:
+
 $$
 \frac{E(i+1,j)+E(i-1,j)-2E(i,j)}{(\Delta x)^2}+ \frac{E(i,j+1)+E(i,j-1)-2E(i,j)}{(\Delta y)^2}+\frac{k^2}{n(i,j)^2}E(i,j)=f(i,j)
 $$
+
 ​	Notice three thing: 
 
 ​	First, defining how many steps we differentiate alone x and y the same as our picture pixels number give our benefit that the following matrix calculation can carry out.
 
 ​	Second, the bigger number of steps we differentiate, the more accurate result we will get, but the number of step need to stay the same as number of pixels, and it also need to stay a relatively small number in order to make the calculation time acceptable. Luckily, our scale of 360*224 seems good enough.
 
-​	Third, the above equation can be explained in a more intuitive way, the finite form describe how a point $(i,j)$ interact with its four neighbors: $ (i+1,j)$,  $ (i-1,j)$,  $(i,j+1)$ and $ (i,j-1)$. In a graphic way to describe this, its like:
+​	Third, the above equation can be explained in a more intuitive way, the finite form describe how a point $(i,j)$ interact with its four neighbors:  $ (i+1,j)$ ,  $ (i-1,j)$ ,  $(i,j+1)$  and  $ (i,j-1)$ . In a graphic way to describe this, its like:
 
 ![image-20221111155642530](C:\Users\lzx\AppData\Roaming\Typora\typora-user-images\image-20221111155642530.png)
 
