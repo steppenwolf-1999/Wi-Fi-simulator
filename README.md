@@ -1,10 +1,6 @@
- <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+tips:The formula may not be in the right Latex form, so anyone want to read this in detail can try download this markdown file to your own computer
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
-
-
-
-
+注：本文中公式的渲染方式可能在Github上不能正确展示，如果需要了解文章中的算法细节可以尝试把本markdown文件下载到本地阅读
 
 
 
