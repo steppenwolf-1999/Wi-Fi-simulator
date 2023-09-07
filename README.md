@@ -161,9 +161,6 @@ $$
 
 #### please refer to both links in this part
 
-https://nbviewer.org/gist/fredo-dedup/31ae1b6017833e9a18f8#Setting-the-up-the-data
-
-https://jasmcole.com/2014/08/25/helmhurts/?from=groupmessage&isappinstalled=0&scene=1&clicktime=1584852482&enterid=1584852482
 
 
 
@@ -171,11 +168,10 @@ Java matrix library:
 
 [Dense and Sparse Matrix Libraries for Java: An Overview (java-matrix.org)](https://java-matrix.org/)
 
-
-
-
-
 JSci: up to now the best
+
+C++ eigen library:
+https://eigen.tuxfamily.org/index.php?title=Main_Page
 
 ​	What we need: a solver to linear system such as:
 
