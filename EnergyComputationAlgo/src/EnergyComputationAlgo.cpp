@@ -1,10 +1,4 @@
-//============================================================================
-// Name        : EnergyComputationAlgo.cpp
-// Author      : Hariharan Sundaram
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Wifi Energy Computation in C++
-//============================================================================
+//Add the testcase
 
 #include "../headers/EnergyComputationAlgo.h"
 
